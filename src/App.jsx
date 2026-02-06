@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import TaskList from "./TaskList";
-import TodoForm from "./TodoForm";
-
+import To_Do_Form from "./To_Do_Form";
+import "./App.css";
 function App() {
   const [tasks, setTasks] = useState([]);
 
@@ -19,14 +19,15 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={ <TaskList tasks={tasks} deleteTask={deleteTask}/>}/>
-        <Route path="/add" element={<TodoForm tasks={tasks} addTask={addTask} updateTask={updateTask}/>}/>
-        <Route path="/edit/:id" element={<TodoForm tasks={tasks} addTask={addTask} updateTask={updateTask}/>}/>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={ <TaskList tasks={tasks} deleteTask={deleteTask}/>}/>
+          <Route path="/add" element={<To_Do_Form tasks={tasks} addTask={addTask} updateTask={updateTask}/>}/>
+          <Route path="/edit/:id" element={<To_Do_Form tasks={tasks} addTask={addTask} updateTask={updateTask}/>}/>
+        </Routes>
+      </BrowserRouter>
   );
 }
 
